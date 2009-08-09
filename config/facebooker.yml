@@ -1,0 +1,17 @@
+development:
+      api_key: 58ae022fba47d476343a08bfbb79e8ea
+      secret_key: f47db35c1edd7982c0f60989cb2869ae
+      canvas_page_name: yourcanvashere
+      callback_url: http://localhost:4567
+     test:
+      api_key: 58ae022fba47d476343a08bfbb79e8ea
+      secret_key: f47db35c1edd7982c0f60989cb2869ae
+      canvas_page_name: yourcanvashere
+      callback_url: http://localhost:4567
+     production:
+      api_key: 58ae022fba47d476343a08bfbb79e8ea
+      secret_key: f47db35c1edd7982c0f60989cb2869ae
+      canvas_page_name: yourcanvashere
+      callback_url: http://yourrealserver.com
+
+
