@@ -23,8 +23,7 @@ end
 
 get '/ring' do
     phone_num = params['phone_number']
-    puts "in /ring phone_num is #{phone_num}"
-    phone = Phone.new(phone_num)
-    phone.ring
+    phone = Phone.new
+    phone.ring phone_num
     haml :index
 end

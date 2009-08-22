@@ -16,9 +16,12 @@
     #page
       %h1= 'Find my phone'
     %form{:method=>'get', :action=>'/ring'}
-      %label
-        'Phone number'
-      %input{:name=>'phone_number'}
-      %input{:type=>'submit',:value=>'Ring Ring'}
+      %p
+        %label
+          Phone number
+      %p  
+        %input{:type=>'text', :name=>'phone_number'}
+      %p
+        %input{:type=>'submit',:value=>'Ring Ring'}
     
 

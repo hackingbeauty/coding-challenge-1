@@ -13,15 +13,18 @@ class Phone
     BASE_URL = "http://findthatphone.com:4567/"
 
     # Outgoing Caller ID you have previously validated with Twilio
-    CALLER_ID = '8665836913'
+    CALLER_ID = '(866) 583-6913'
     
-    def initialize phone_num
-        @phone_num = phone_num
-        puts 'phone number is ' + @phone_num
-    end
+    # attr_accessor :phone_num
+    # 
+    # def initialize phone_num
+    #     @phone_num = phone_num.to_s
+    #     # puts 'phone number is ' + @phone_num
+    # end
     
-    def ring
-        return unless @phone_num
+    def ring phone_num
+        puts 'you have executed the ring method'
+        # return unless phone_num
         # if !params['number']
         #     redirect_to({ :action => '.', 'msg' => 'Invalid phone number' })
         #     return
@@ -30,22 +33,24 @@ class Phone
         # parameters sent to Twilio REST API
         d = {
             'Caller' => CALLER_ID,
-            'Called' => @phone_num,
+            'Called' => phone_num,
             'Url' => BASE_URL + '/reminder',
         }
         begin
-            puts 'inside begin'
+            puts 'you are in the begin clause'
+            puts 'inside begin and you are calling #{phone_num} '
             account = TwilioRest::Account.new(ACCOUNT_SID, ACCOUNT_TOKEN)
             resp = account.request(
                 "/#{API_VERSION}/Accounts/#{ACCOUNT_SID}/Calls",
-                'POST', d)
+                'GET', d)
             resp.error! unless resp.kind_of? Net::HTTPSuccess
+            puts 'this is looking good!'
         rescue StandardError => bang
             puts 'there is a standard error! which is ' + bang
             # redirect_to({ :action => 'views/error.haml', 'msg' => "Error #{ bang }" })
             return
         end
-
+        puts 'you have ended'
         # redirect_to({ :action => 'index.haml', 
         #     'msg' => "Calling #{ @phone_num }..." })
     end
