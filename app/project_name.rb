@@ -2,7 +2,6 @@
 require 'rubygems'
 require 'sinatra'
 require 'haml'
-require 'phone'
 
 get '/' do
   haml :index
@@ -21,9 +20,3 @@ get '/ui/stylesheets/styles.css' do
   # sass :style
 end
 
-get '/ring' do
-    phone_num = params['phone_number']
-    phone = Phone.new
-    phone.ring phone_num
-    haml :index
-end
