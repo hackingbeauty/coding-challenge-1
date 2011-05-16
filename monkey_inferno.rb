@@ -17,9 +17,12 @@ configure do
 end
 
 get '/' do
-  url = 'https://' + settings.san_francisco_http_call + "&key=" + settings.google_places_api_key
-  @jsonResponse = open(url).read.to_s
   haml :index
+end
+
+get '/get_restaurants' do
+  url = 'https://' + settings.san_francisco_http_call + "&key=" + settings.google_places_api_key
+  jsonResponse = open(url).read.to_s
 end
 
 

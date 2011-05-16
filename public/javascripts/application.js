@@ -1,25 +1,30 @@
-(function(){
-
-	if(!window.NAMESPACE) {window.NAMESPACE = {}}	//Create Namespace
-
-	var externalLinks = function(){
-		if (!document.getElementsByTagName) { 
-			return; 
-		}
-		var anchors = document.getElementsByTagName("a");
-		for (var i=0; i<anchors.length; i++) {
-			var anchor = anchors[i];
-			if (anchor.getAttribute("href") && anchor.getAttribute("rel") == "external") {
-				anchor.target = "_blank";
-			}
-		} 
-	}
-	window.NAMESPACE.externalLinks = externalLinks;
-
-})();
-		
 $(document).ready (function() {
 
-	NAMESPACE.externalLinks();
+  MonkeyInferno = {
+    getRestaurants:function(){
+      $.ajax({
+        url: '/get_restaurants',
+        dataType: 'json',
+        success:function(res){
+          console.log(res);
+          var restaurants = res.results;
+          for(r in restaurants){
+            console.log(restaurants[r]);
+            $('#restaurants').append( '<li>' + 
+                                        '<img src=' + restaurants[r].icon +' alt=' + restaurants[r].name + '/>' + 
+                                        '<span>' + restaurants[r].name + '</span>' +
+                                        '<div>' + restaurants[r].vicinity + '</div>' +
+                                      '</li>');
+          }
+          return res;
+        },
+        error:function(res){
+          alert("There was an error!");
+        }
+      })
+    }
+  }
+  
+  MonkeyInferno.getRestaurants();
 	
 });
