@@ -1,3 +1,3 @@
-require 'project_name'
+require 'monkey_inferno'
 run Sinatra::Application
 
