@@ -3,4 +3,5 @@ Google Places Request => https://maps.googleapis.com/maps/api/place/search/json?
 Log of Hours:
 May 16 - 12:00pm - 12:30pm
 May 16 - 1:15pm - 2:00pm - worked out ruby hiccups with open-uri, set up Google Places API key, configured yaml, successfully getting JSON response from Google Places
-May 16 - 2:00pm - 2:30 - created JavaScript to make ajax call and parse JSON response
+May 16 - 2:00pm - 2:30pm - created JavaScript to make ajax call and parse JSON response
+May 16 - 2:30pm - 3:30pm - worked on Google Maps integration - hit some problems

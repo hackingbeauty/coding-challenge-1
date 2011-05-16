@@ -1,1 +1,15 @@
-/** {border:1px solid green;}*/
+#restaurants {
+  float:left;
+}
+
+#map_canvas {
+  width:800px;
+  height:500px;
+  border:2px solid red;
+  float:right;
+}
+
+.yada {
+  border:1px solid blue;
+  background:red;
+}
