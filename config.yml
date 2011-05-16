@@ -1,2 +1,3 @@
 google_places_api_key: "AIzaSyAhrIXL-zeOVUIyrMJYkdSzN7v7F4vjz5M" 
-google_places_base_url: "https://maps.googleapis.com/maps/api/place/search/output?"
+google_places_base_url: "maps.googleapis.com/maps/api/place/search/json?"
+san_francisco_http_call: "maps.googleapis.com/maps/api/place/search/json?location=37.77493,-122.41942&radius=500&types=food&sensor=false"

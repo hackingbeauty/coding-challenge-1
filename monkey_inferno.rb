@@ -2,6 +2,11 @@ require 'rubygems'
 require 'sinatra'
 require 'haml'
 require 'yaml'
+require 'open-uri'
+require 'openssl'
+require 'json'
+
+OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE #SSL open-uri hack. open-uri can't read ssl links
 
 ### Configuration
 configure do   
@@ -12,7 +17,8 @@ configure do
 end
 
 get '/' do
-  
+  url = 'https://' + settings.san_francisco_http_call + "&key=" + settings.google_places_api_key
+  @jsonResponse = open(url).read.to_s
   haml :index
 end
 

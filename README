@@ -1,5 +1,7 @@
 Google Places Request => https://maps.googleapis.com/maps/api/place/search/json?location=37.77493,-122.41942&radius=500&types=food&sensor=false&key=AIzaSyAhrIXL-zeOVUIyrMJYkdSzN7v7F4vjz5M
 
+https://maps.googleapis.com/maps/api/place/search/json?location=37.77493,-122.41942&radius=500&types=food&sensor=false&keyAIzaSyAhrIXL-zeOVUIyrMJYkdSzN7v7F4vjz5M
+
 Log of Hours:
 May 16 - 12:00pm - 12:30pm
-May 16 - 1:15pm -
+May 16 - 1:15pm - 2:00pm - worked out ruby hiccups with open-uri, set up Google Places API key, configured yaml, successfully getting JSON response from Google Places
