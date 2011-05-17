@@ -19,7 +19,7 @@ $(document).ready (function() {
         //Google says this value is set in meters. San Francisco is 47.6 square miles, 
         //which is 123 Kilometers, which is 123,000 meters; however, the generated points exceed the boundary of SF
         radius: '12000', 
-        types: ['restaurant']
+        types: ["restaurant", "establishment"]
       };
       infowindow = new google.maps.InfoWindow();
       service = new google.maps.places.PlacesService(MonkeyInferno.map);
@@ -59,7 +59,8 @@ $(document).ready (function() {
          );
          var input = document.getElementById('searchInput');
          var options = {
-           bounds: defaultBounds
+           bounds: defaultBounds,
+           types: ["restaurant", "establishment"]
          };
 
          autocomplete = new google.maps.places.Autocomplete(input, options);
