@@ -5,6 +5,10 @@
     %link{ :href => "stylesheets/reset-min.css", :rel => "stylesheet", :media => "screen", :type => "text/css" }
     %link{ :href => "stylesheets/application.css", :rel => "stylesheet", :media => "screen", :type => "text/css" }
   %body
+    %header
+      %form{:action => "/search", :method => "get", :id => "searchForm"}
+        %input{:type => "text", :value => "", :autocomplete => "off", :id => "searchInput", :name => "searchInput", :tabindex => 1}
+        %input{:type => "submit", :value=> "Search", :id => "searchBtn", :tabindex => 2}
     #main
       %h2
         Restaurants

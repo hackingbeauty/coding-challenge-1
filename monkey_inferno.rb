@@ -21,8 +21,16 @@ get '/' do
 end
 
 get '/get_restaurants' do
-  url = 'https://' + settings.san_francisco_http_call + "&key=" + settings.google_places_api_key
+  url = settings.san_francisco_http_call + '&key=' + settings.google_places_api_key
+  puts url
   jsonResponse = open(url).read.to_s
+end
+
+get '/autocomplete_search' do
+  input = URI.escape params[:searchInput]
+  puts "input is #{input}"
+  url = settings.google_places_autocomplete_url + 'input=' + input +'&types=geocode&sensor=false&key=' + settings.google_places_api_key
+  puts url
 end
 
 

@@ -1,3 +1,46 @@
+body {
+  font-size:100%;
+  font-family:"Trebuchet MS",Trebuchet,Arial,Sans-Serif;
+}
+
+h2 {
+  
+}
+
+header {
+  padding:20px;
+}
+
+#searchForm {
+}
+
+#searchInput {
+  color:#B4B2B2;
+  border: 6px solid #152735;
+  height: 30px;
+  width: 510px;
+  font-size: 1.3em;
+  padding:2px;
+}
+
+#searchBtn{
+  margin-top: 3px !important;
+  width: 130px;
+  height: 45px;
+  color: #152735;
+  border: 1px solid #FA2;
+  font-weight: bold;
+  font-size: 1.3em;
+  cursor: pointer;
+  background: #FFB82F;
+  background: -webkit-gradient(linear, 0 0, 0 100%, from(#FFD757), to(#FA2));
+  background: -moz-linear-gradient(top, #FFEC64, #FFB027);
+}
+
+#main {
+  padding:20px;
+}
+
 #restaurants {
   float:left;
 }
@@ -7,9 +50,4 @@
   height:500px;
   border:2px solid red;
   float:right;
-}
-
-.yada {
-  border:1px solid blue;
-  background:red;
 }

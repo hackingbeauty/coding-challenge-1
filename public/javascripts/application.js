@@ -1,13 +1,33 @@
 $(document).ready (function() {
 
   MonkeyInferno = {
+    init:function(){
+      this.getRestaurants();
+      this.searchOnKeyUp();
+    },
+    searchOnKeyUp: function(){
+      $('input#searchInput').keyup(function(e){
+        $.ajax({
+          type: 'get',
+          url: '/autocomplete_search',
+          data: $('#searchForm').serialize(),
+          dataType: 'json',
+          error: function(res){
+            
+          },
+          success: function(res){
+            
+          }
+        });
+      });
+    },
     getRestaurants:function(){
       $.ajax({
         url: '/get_restaurants',
         dataType: 'json',
         success:function(res){
           var restaurants = res.results;
-          console.log(restaurants);
+          // console.log(restaurants);
           for(r in restaurants){
             $('#restaurants').append( '<li>' + 
                                       '<img src=' + restaurants[r].icon +' alt=' + restaurants[r].name + '/>' + 
@@ -33,11 +53,10 @@ $(document).ready (function() {
           map.openInfoWindowHtml(marker);
         }); 
         map.addOverlay(marker);
-        
       }
     }
   }
-  
-  MonkeyInferno.getRestaurants();
-	
+  	
+  MonkeyInferno.init();
+  	
 });
