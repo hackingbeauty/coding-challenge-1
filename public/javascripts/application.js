@@ -2,10 +2,14 @@ $(document).ready (function() {
 
   MonkeyInferno = {
     map: undefined,
+    infowindow: undefined,
+    service:undefined,
+    autocomplete:undefined,
+    results:undefined,
     init:function(){
       this.drawMap();
-      this.getRestaurantList();
-      this.autoComplete();
+      this.automaticCompletion();
+      this.onSubmitPress();
     },
     drawMap: function(){
       var sf = new google.maps.LatLng(37.77493,-122.41942);
@@ -16,21 +20,21 @@ $(document).ready (function() {
       });
       var request = {
         location: sf,
-        //Google says this value is set in meters. San Francisco is 47.6 square miles, 
-        //which is 123 Kilometers, which is 123,000 meters; however, the generated points exceed the boundary of SF
         radius: '12000', 
         types: ["restaurant", "establishment"]
       };
-      infowindow = new google.maps.InfoWindow();
-      service = new google.maps.places.PlacesService(MonkeyInferno.map);
-      service.search(request, MonkeyInferno.mapCallBack);
+      MonkeyInferno.infowindow = new google.maps.InfoWindow();
+      MonkeyInferno.service = new google.maps.places.PlacesService(MonkeyInferno.map);
+      MonkeyInferno.service.search(request, MonkeyInferno.mapCallBack);
     },
     mapCallBack:function(results,status){
       if (status == google.maps.places.PlacesServiceStatus.OK) {
+        MonkeyInferno.results = results;
         for (var i = 0; i < results.length; i++) {
           var place = results[i];
           MonkeyInferno.createMarker(place); 
         }
+        MonkeyInferno.showResultsList(results);
       }
     },
     createMarker:function(place){
@@ -40,11 +44,11 @@ $(document).ready (function() {
         position: new google.maps.LatLng(placeLoc.lat(), placeLoc.lng())
       });
       google.maps.event.addListener(marker, 'click', function() {
-        infowindow.setContent(place.name);
-        infowindow.open(map, this);
+        MonkeyInferno.infowindow.setContent(place.name);
+        MonkeyInferno.infowindow.open(map, this);
       });
     },
-    autoComplete:function(){
+    automaticCompletion:function(){
       var bounds, southWestLat, southWestLong, northEastLat, northEastLong;
       google.maps.event.addListenerOnce(MonkeyInferno.map, 'bounds_changed', function(){
          bounds = this.getBounds();
@@ -52,7 +56,6 @@ $(document).ready (function() {
          southWestLong = bounds.getSouthWest().Ka;
          northEastLat = bounds.getNorthEast().Ja;
          northEastLong = bounds.getNorthEast().Ka;
-
          var defaultBounds = new google.maps.LatLngBounds(
            new google.maps.LatLng(southWestLat,southWestLong),
            new google.maps.LatLng(northEastLat,northEastLong)
@@ -62,30 +65,40 @@ $(document).ready (function() {
            bounds: defaultBounds,
            types: ["restaurant", "establishment"]
          };
-
-         autocomplete = new google.maps.places.Autocomplete(input, options);
+         MonkeyInferno.autocomplete = new google.maps.places.Autocomplete(input, options);
+         MonkeyInferno.onResultSelected();
       });
-
     },
-    getRestaurantList:function(){
-      // $.ajax({
-      //   url: '/get_restaurants',
-      //   dataType: 'json',
-      //   success:function(res){
-      //     var restaurants = res.results;
-      //     for(r in restaurants){
-      //       $('#restaurants').append( '<li>' + 
-      //                                 '<img src=' + restaurants[r].icon +' alt=' + restaurants[r].name + '/>' + 
-      //                                 '<span>' + restaurants[r].name + '</span>' +
-      //                                 '<div>' + restaurants[r].vicinity + '</div>' +
-      //                                 '</li>');
-      //     }
-      //   },
-      //   error:function(res){
-      //     alert("There was an error!");
-      //   }
-      // })
+    showResultsList:function(results){
+      $('ul#results').empty();
+      for(r in results){
+        $('#results').append( '<li>' + 
+                              '<img src=' + results[r].icon +' alt=' + results[r].name + '/>' + 
+                              '<span>' + results[r].name + '</span>' +
+                              '<div>' + results[r].vicinity + '</div>' +
+                              '</li>');
+      }
+    },
+    onSubmitPress:function(){
+      $('form#searchForm').submit(function(e){
+        return false;
+      });
+    },
+    onResultSelected:function(){
+      google.maps.event.addListener(MonkeyInferno.autocomplete, 'place_changed', function() {
+        MonkeyInferno.showSelectedResult(MonkeyInferno.autocomplete.getPlace());
+      });
+    },
+    showSelectedResult:function(result){
+      $('ul#results').empty();
+      $('#results').append( '<li>' + 
+                            '<img src=' + result.icon +' alt=' + result.name + '/>' + 
+                            '<span>' + result.name + '</span>' +
+                            '<div>' + result.vicinity + '</div>' +
+                            '</li>');
+
     }
+
   }
   	
   MonkeyInferno.init();
