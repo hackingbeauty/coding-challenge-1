@@ -1,5 +1,6 @@
 Google Places Request => https://maps.googleapis.com/maps/api/place/search/json?location=37.77493,-122.41942&radius=500&types=food&sensor=false&key=AIzaSyAhrIXL-zeOVUIyrMJYkdSzN7v7F4vjz5M
 
+Challenge #1:
 Log of Hours:
 May 16 - 12:00pm - 12:30pm
 May 16 - 1:15pm - 2:00pm - worked out ruby hiccups with open-uri, set up Google Places API key, configured yaml, successfully getting JSON response from Google Places
@@ -8,3 +9,15 @@ May 16 - 2:30pm - 3:30pm - worked on Google Maps integration - hit some problems
 May 16 - 8:00pm - 10:00pm - figuring out Google Place API
 May 16 - 10:00pm - 11:30pm - successfully implemented autocomplete
 May 16 - 12:00am - 1:50am - just figuring out and toying with Google Maps
+Total:
+30
+45
+30
+60
+120
+90
+110
+---
+485
+8 hours
+
