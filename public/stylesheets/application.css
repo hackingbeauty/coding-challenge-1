@@ -4,16 +4,26 @@ body {
 }
 
 h1 {
-  font-size:1.8em;
+  font-size:2.0em;
+  color:white;
   font-weight:bold;
+  padding-top:6px;
+}
+
+h2 {
+  font-size:1.8em;
 }
 
 #header {
   padding:20px;
   background:#6b0d21;
+  display:inline-block;
+  width:100%;
 }
 
 #searchForm {
+  float:left;
+  margin-right:60px;
 }
 
 #searchInput {
