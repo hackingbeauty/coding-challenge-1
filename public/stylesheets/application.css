@@ -4,21 +4,38 @@ body {
 }
 
 h1 {
-  font-size:2.0em;
+  font-size:1.5em;
   color:white;
   font-weight:bold;
-  padding-top:6px;
+}
+
+h1 a{
+  color:white;
 }
 
 h2 {
   font-size:1.8em;
 }
 
+a {
+  color:white;
+  text-decoration:none;
+  cursor:pointer;
+}
+
+a:hover {
+  text-decoration:underline;
+}
+
+.container {
+  margin:0 auto;
+  width:960px;
+}
+
 #header {
   padding:20px;
   background:#6b0d21;
-  display:inline-block;
-  width:100%;
+  height:50px;
 }
 
 #searchForm {
@@ -50,20 +67,30 @@ h2 {
 }
 
 #main {
-  padding:20px;
+  border:2px solid black;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  margin-top:20px;
+  background:#FFFAE6;
+  display:inline-block;
+  width:100%;
+  padding:10px;
+  margin-bottom:20px;
 }
 
 #map {
-  width:800px;
+  width:60%;
   height:500px;
   border:6px solid #152735;
-  float:right;
+  float:left;
   margin-top:-25px;
 }
 
 #results {
   float:left;
   margin-top:20px;
+  margin-right:20px;
+  width:35%;
 }
 
 #results li {
@@ -74,6 +101,7 @@ h2 {
 
 #results li img {
   float:left;
+  margin-right:5px;
 }
 
 .pac-container{
