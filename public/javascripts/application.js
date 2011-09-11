@@ -1,6 +1,6 @@
 $(document).ready (function() {
 
-  MonkeyInferno = {
+  CodingChallenge1 = {
     map: undefined,
     infowindow: undefined,
     service:undefined,
@@ -13,7 +13,7 @@ $(document).ready (function() {
     },
     drawMap: function(){
       var sf = new google.maps.LatLng(37.77493,-122.41942);
-      MonkeyInferno.map = new google.maps.Map(document.getElementById('map'), {
+      CodingChallenge1.map = new google.maps.Map(document.getElementById('map'), {
         mapTypeId: google.maps.MapTypeId.ROADMAP,
         center: sf,
         zoom: 12
@@ -23,34 +23,34 @@ $(document).ready (function() {
         radius: '12000', 
         types: ["restaurant", "establishment"]
       };
-      MonkeyInferno.infowindow = new google.maps.InfoWindow();
-      MonkeyInferno.service = new google.maps.places.PlacesService(MonkeyInferno.map);
-      MonkeyInferno.service.search(request, MonkeyInferno.mapCallBack);
+      CodingChallenge1.infowindow = new google.maps.InfoWindow();
+      CodingChallenge1.service = new google.maps.places.PlacesService(CodingChallenge1.map);
+      CodingChallenge1.service.search(request, CodingChallenge1.mapCallBack);
     },
     mapCallBack:function(results,status){
       if (status == google.maps.places.PlacesServiceStatus.OK) {
-        MonkeyInferno.results = results;
+        CodingChallenge1.results = results;
         for (var i = 0; i < results.length; i++) {
           var place = results[i];
-          MonkeyInferno.createMarker(place); 
+          CodingChallenge1.createMarker(place); 
         }
-        MonkeyInferno.showResultsList(results);
+        CodingChallenge1.showResultsList(results);
       }
     },
     createMarker:function(place){
       var placeLoc = place.geometry.location;
       var marker = new google.maps.Marker({
-        map: MonkeyInferno.map,
+        map: CodingChallenge1.map,
         position: new google.maps.LatLng(placeLoc.lat(), placeLoc.lng())
       });
       google.maps.event.addListener(marker, 'click', function() {
-        MonkeyInferno.infowindow.setContent(place.name);
-        MonkeyInferno.infowindow.open(map, this);
+        CodingChallenge1.infowindow.setContent(place.name);
+        CodingChallenge1.infowindow.open(map, this);
       });
     },
     automaticCompletion:function(){
       var bounds, southWestLat, southWestLong, northEastLat, northEastLong;
-      google.maps.event.addListenerOnce(MonkeyInferno.map, 'bounds_changed', function(){
+      google.maps.event.addListenerOnce(CodingChallenge1.map, 'bounds_changed', function(){
          bounds = this.getBounds();
          southWestLat = bounds.getSouthWest().Ja;
          southWestLong = bounds.getSouthWest().Ka;
@@ -65,8 +65,8 @@ $(document).ready (function() {
            bounds: defaultBounds,
            types: ["restaurant", "establishment"]
          };
-         MonkeyInferno.autocomplete = new google.maps.places.Autocomplete(input, options);
-         MonkeyInferno.onResultSelected();
+         CodingChallenge1.autocomplete = new google.maps.places.Autocomplete(input, options);
+         CodingChallenge1.onResultSelected();
       });
     },
     showResultsList:function(results){
@@ -85,8 +85,8 @@ $(document).ready (function() {
       });
     },
     onResultSelected:function(){
-      google.maps.event.addListener(MonkeyInferno.autocomplete, 'place_changed', function() {
-        MonkeyInferno.showSelectedResult(MonkeyInferno.autocomplete.getPlace());
+      google.maps.event.addListener(CodingChallenge1.autocomplete, 'place_changed', function() {
+        CodingChallenge1.showSelectedResult(CodingChallenge1.autocomplete.getPlace());
       });
     },
     showSelectedResult:function(result){
@@ -101,6 +101,6 @@ $(document).ready (function() {
 
   }
   	
-  MonkeyInferno.init();
+  CodingChallenge1.init();
   	
 });
